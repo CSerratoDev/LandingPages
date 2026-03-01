@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>El Rancho Grande — Sombreros & Botas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- TOP ANNOUNCEMENT -->
+<div class="topbar">Envío gratis en compras +$999 MXN &nbsp;·&nbsp; Apertura: Lun–Sáb 9am–8pm &nbsp;·&nbsp; Sucursales en: CDMX · Monterrey · Guadalajara</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    El Rancho Grande
+    <span>Sombreros &amp; Botas desde 1987</span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="#" class="active" onclick="showPage('shop',this)">Tienda</a>
+    <a href="#" onclick="showPage('novedades',this)">Novedades</a>
+    <a href="#" onclick="showPage('horarios',this)">Horarios</a>
+    <a href="#" onclick="showPage('nosotros',this)">Nosotros</a>
+  </nav>
+
+  <div class="header-icons">
+    <button class="icon-btn" onclick="toggleCart()" title="Carrito">
+      <img src="https://res.cloudinary.com/drxg6xc6a/image/upload/v1772316863/shopping_eo88ug.svg" style="filter: invert(10%);">
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" style="padding-top: 3rem;">
+  <a href="#" onclick="showPage('shop');closeMobileMenu()">Tienda</a>
+  <a href="#" onclick="showPage('novedades');closeMobileMenu()">Novedades</a>
+  <a href="#" onclick="showPage('horarios');closeMobileMenu()">Horarios</a>
+  <a href="#" onclick="showPage('nosotros');closeMobileMenu()">Nosotros</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: SHOP
+═══════════════════════════════════════ -->
+<div id="page-shop" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div style="position:relative;z-index:1">
+      <div class="hero-eyebrow">Colección Primavera–Verano 2026</div>
+      <h1 class="hero-title">El estilo texano<br>que te define</h1>
+      <p class="hero-sub">Sombreros artesanales y botas de cuero genuino. Hechos para durar toda una vida.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="scrollToCatalog()">Ver Catálogo</button>
+        <button class="btn-outline" onclick="showPage('novedades')">Novedades 2026</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY PILLS -->
+  <div class="categories" id="cat-strip">
+    <button class="cat-pill active" onclick="filterCategory('all',this)">Todo</button>
+    <button class="cat-pill" onclick="filterCategory('hombre',this)">Hombre</button>
+    <button class="cat-pill" onclick="filterCategory('dama',this)">Dama</button>
+    <button class="cat-pill" onclick="filterCategory('ninos',this)">Niños</button>
+    <button class="cat-pill" onclick="filterCategory('sombreros',this)">Sombreros</button>
+    <button class="cat-pill" onclick="filterCategory('botas',this)">Botas</button>
+    <button class="cat-pill" onclick="filterCategory('cinturones',this)">Cinturones</button>
+    <button class="cat-pill" onclick="filterCategory('accesorios',this)">Accesorios</button>
+    <button class="cat-pill" onclick="filterCategory('new',this)">Novedad</button>
+    <button class="cat-pill" onclick="filterCategory('sale',this)">Oferta</button>
+  </div>
+
+  <!-- CATALOG -->
+  <div class="catalog-wrap" id="catalog">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="filter-header">
+        <span class="filter-title">Filtros</span>
+        <button class="clear-filters" onclick="clearAllFilters()">Limpiar</button>
+      </div>
+
+      <div class="filter-groups">
+        <!-- Genero -->
+        <div class="filter-group">
+          <div class="filter-group-label">Género</div>
+          <label class="filter-check"><input type="checkbox" data-filter="genero" value="hombre" onchange="applyFilters()"/><span>Hombre</span><span class="count">24</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="genero" value="dama" onchange="applyFilters()"/><span>Dama</span><span class="count">19</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="genero" value="ninos" onchange="applyFilters()"/><span>Niños</span><span class="count">12</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="genero" value="unisex" onchange="applyFilters()"/><span>Unisex</span><span class="count">8</span></label>
+        </div>
+        <!-- Tipo -->
+        <div class="filter-group">
+          <div class="filter-group-label">Tipo de producto</div>
+          <label class="filter-check"><input type="checkbox" data-filter="tipo" value="sombreros" onchange="applyFilters()"/><span>Sombreros</span><span class="count">18</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="tipo" value="botas" onchange="applyFilters()"/><span>Botas</span><span class="count">22</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="tipo" value="cinturones" onchange="applyFilters()"/><span>Cinturones</span><span class="count">10</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="tipo" value="accesorios" onchange="applyFilters()"/><span>Accesorios</span><span class="count">13</span></label>
+        </div>
+        <!-- Precio -->
+        <div class="filter-group">
+          <div class="filter-group-label">Precio (MXN)</div>
+          <div class="price-inputs">
+            <input type="number" id="price-min" placeholder="Mín" min="0" onchange="applyFilters()"/>
+            <span class="price-sep">—</span>
+            <input type="number" id="price-max" placeholder="Máx" min="0" onchange="applyFilters()"/>
+          </div>
+        </div>
+        <!-- Tallas -->
+        <div class="filter-group">
+          <div class="filter-group-label">Talla (sombreros)</div>
+          <div class="size-grid">
+            <button class="size-btn" data-size-filter="S" onclick="toggleSizeFilter(this)">S</button>
+            <button class="size-btn" data-size-filter="M" onclick="toggleSizeFilter(this)">M</button>
+            <button class="size-btn" data-size-filter="L" onclick="toggleSizeFilter(this)">L</button>
+            <button class="size-btn" data-size-filter="XL" onclick="toggleSizeFilter(this)">XL</button>
+            <button class="size-btn" data-size-filter="XXL" onclick="toggleSizeFilter(this)">XXL</button>
+          </div>
+          <div class="filter-group-label" style="margin-top:.85rem">Talla (botas)</div>
+          <div class="size-grid">
+            <button class="size-btn" data-size-filter="24" onclick="toggleSizeFilter(this)">24</button>
+            <button class="size-btn" data-size-filter="25" onclick="toggleSizeFilter(this)">25</button>
+            <button class="size-btn" data-size-filter="26" onclick="toggleSizeFilter(this)">26</button>
+            <button class="size-btn" data-size-filter="27" onclick="toggleSizeFilter(this)">27</button>
+            <button class="size-btn" data-size-filter="28" onclick="toggleSizeFilter(this)">28</button>
+            <button class="size-btn" data-size-filter="29" onclick="toggleSizeFilter(this)">29</button>
+            <button class="size-btn" data-size-filter="30" onclick="toggleSizeFilter(this)">30</button>
+          </div>
+        </div>
+        <!-- Extras -->
+        <div class="filter-group">
+          <div class="filter-group-label">Destacados</div>
+          <label class="filter-check"><input type="checkbox" data-filter="special" value="new" onchange="applyFilters()"/><span>Novedades</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="special" value="sale" onchange="applyFilters()"/><span>En oferta</span></label>
+          <label class="filter-check"><input type="checkbox" data-filter="special" value="hot" onchange="applyFilters()"/><span>Más vendidos</span></label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS -->
+    <div class="products-area">
+      <div class="products-topbar">
+        <span class="results-count" id="results-count"><strong>0</strong> productos</span>
+        <select class="sort-select" id="sort-select" onchange="applyFilters()">
+          <option value="default">Ordenar por: Destacados</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="name-asc">Nombre A–Z</option>
+          <option value="newest">Más recientes</option>
+        </select>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: NOVEDADES
+═══════════════════════════════════════ -->
+<div id="page-novedades" class="page">
+  <div style="background:var(--leather2);color:var(--sand);padding:3.5rem 2rem;text-align:center">
+    <h1 style="font-family:var(--western);font-size:2.2rem;margin-bottom:.5rem">Novedades 2026</h1>
+    <p style="font-family:var(--serif);font-style:italic;opacity:.8">Lo último en llegar al rancho</p>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:2rem">
+    <div class="product-grid" id="novelties-grid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: HORARIOS
+═══════════════════════════════════════ -->
+<div id="page-horarios" class="page">
+  <div class="schedule-wrap">
+    <div class="schedule-title">
+      <h2>Horarios de Atención</h2>
+      <p>Visítanos en cualquiera de nuestras sucursales</p>
+    </div>
+    <div style="margin-bottom:2rem">
+      <div style="text-align:center;margin-bottom:1.25rem">
+        <select id="branch-select" class="sort-select" style="font-size:.88rem;padding:.55rem 1.2rem" onchange="renderSchedule()">
+          <option value="cdmx">CDMX — Polanco</option>
+          <option value="mty">Monterrey — San Pedro</option>
+          <option value="gdl">Guadalajara — Zapopan</option>
+        </select>
+      </div>
+      <div class="schedule-grid" id="schedule-grid"></div>
+    </div>
+    <div class="contact-block">
+      <h3>Contáctanos</h3>
+      <div class="contact-grid">
+        <div class="contact-item"><strong>Teléfono</strong>800 123 4567</div>
+        <div class="contact-item"><strong>WhatsApp</strong>+52 55 1234 5678</div>
+        <div class="contact-item"><strong>Email</strong>hola@elranchgrande.mx</div>
+        <div class="contact-item"><strong>Instagram</strong>@elranchgrande</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: NOSOTROS
+═══════════════════════════════════════ -->
+<div id="page-nosotros" class="page">
+  <div class="about-hero">
+    <h1>Nuestra Historia</h1>
+    <p>Desde 1987, llevamos el orgullo del estilo vaquero mexicano a cada rincón del país.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-card"><h3>Tradición Artesanal</h3><p>Cada sombrero es elaborado a mano por maestros artesanos con décadas de experiencia en las técnicas más tradicionales de Jalisco y Nuevo León.</p></div>
+    <div class="about-card"><h3>Cuero Genuino</h3><p>Trabajamos exclusivamente con cuero de primera calidad, curtido de forma sustentable. Nuestras botas están diseñadas para durar generaciones.</p></div>
+    <div class="about-card"><h3>Presencia Nacional</h3><p>3 sucursales en las principales ciudades de México y envíos a toda la república. Tu estilo texano, donde estés.</p></div>
+    <div class="about-card"><h3>+35 Años de Experiencia</h3><p>Fundada en 1987, somos la tienda de sombreros y botas de mayor tradición en México, con más de 50,000 clientes satisfechos.</p></div>
+    <div class="about-card"><h3>Garantía Total</h3><p>Todos nuestros productos tienen garantía de 90 días. Si no quedas satisfecho, te devolvemos tu dinero sin preguntas.</p></div>
+    <div class="about-card"><h3>Compromiso Verde</h3><p>Usamos empaques 100% biodegradables y trabajamos con proveedores que respetan los estándares ambientales más altos.</p></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">El Rancho Grande<span>Sombreros &amp; Botas</span></div>
+      <p>La tradición del estilo vaquero mexicano desde 1987. Calidad y autenticidad en cada prenda.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Productos</h4>
+      <a href="#">Sombreros Hombre</a>
+      <a href="#">Sombreros Dama</a>
+      <a href="#">Botas Western</a>
+      <a href="#">Botas de Trabajo</a>
+      <a href="#">Cinturones y Accesorios</a>
+    </div>
+    <div class="footer-col">
+      <h4>Tienda</h4>
+      <a href="#">Novedades 2026</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Más Vendidos</a>
+      <a href="#">Guía de Tallas</a>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <a href="#">Envíos y Devoluciones</a>
+      <a href="#">Cuidado del Cuero</a>
+      <a href="#">Preguntas Frecuentes</a>
+      <a href="#">Términos y Condiciones</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 El Rancho Grande — Todos los derechos reservados · Hecho por <a href="https://www.cserrato.dev/" target="_blank">cserrato.dev</a> en México</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Tu Carrito</h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list"></div>
+  <div class="cart-footer" id="cart-footer">
+    <div class="cart-summary-row"><span>Subtotal</span><span id="cart-subtotal">$0</span></div>
+    <div class="cart-summary-row"><span>Envío</span><span id="cart-shipping">$150</span></div>
+    <div class="cart-summary-row"><span>IVA (incluido)</span><span>—</span></div>
+    <div class="cart-summary-row total"><span>Total</span><span id="cart-total">$0</span></div>
+    <button class="btn-checkout" onclick="checkout()">Proceder al Pago →</button>
+  </div>
+</div>
+
+<!-- TICKET MODAL -->
+<div class="modal-overlay" id="ticket-modal">
+  <div class="ticket">
+    <div class="ticket-top">
+      <div class="ticket-logo">El Rancho Grande</div>
+      <div class="ticket-sub">Sombreros &amp; Botas · Comprobante de Compra</div>
+    </div>
+    <div class="ticket-body">
+      <div class="ticket-num">
+        <div class="t-label">Orden #</div>
+        <div class="t-val" id="ticket-order-num">ERG-0001</div>
+        <div style="font-size:.68rem;color:var(--muted);margin-top:.25rem" id="ticket-date"></div>
+      </div>
+      <div class="ticket-items" id="ticket-items"></div>
+      <div class="ticket-totals" id="ticket-totals"></div>
+      <div class="ticket-footer">
+        <div class="ticket-barcode" id="ticket-barcode"></div>
+        <div>Gracias por tu compra</div>
+        <div>Conserva este ticket para cualquier aclaración</div>
+        <div style="margin-top:.4rem">Política de devoluciones: 30 días con ticket</div>
+      </div>
+    </div>
+    <div class="ticket-actions">
+      <button class="btn-print" onclick="window.print()">Imprimir</button>
+      <button class="btn-close-ticket" onclick="closeTicket()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="detail-overlay" id="detail-overlay">
+  <div class="detail-modal">
+    <div class="detail-inner">
+      <div class="detail-img" id="detail-img"></div>
+      <div class="detail-info">
+        <div class="detail-close"><button onclick="closeDetail()">✕</button></div>
+        <div class="detail-category" id="detail-cat"></div>
+        <div class="detail-name" id="detail-name"></div>
+        <div class="detail-price" id="detail-price"></div>
+        <div class="detail-desc" id="detail-desc"></div>
+        <div class="detail-label">Color</div>
+        <div class="detail-colors" id="detail-colors"></div>
+        <div class="detail-label">Talla</div>
+        <div class="detail-sizes" id="detail-sizes"></div>
+        <button class="btn-primary" style="width:100%;padding:.75rem;font-size:.82rem" onclick="addFromDetail()">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Producto agregado al carrito</div>
+
+<script>
+/* ═══════════════════════════════════════
+   DATA
+═══════════════════════════════════════ */
+const COLORS = {
+  cafe:     {hex:'#7a4f2d',label:'Café'},
+  negro:    {hex:'#1a1a1a',label:'Negro'},
+  arena:    {hex:'#d4a97a',label:'Arena'},
+  vino:     {hex:'#6b1f2e',label:'Vino'},
+  camel:    {hex:'#c19a6b',label:'Camel'},
+  verde:    {hex:'#3a5a40',label:'Verde Olivo'},
+  gris:     {hex:'#7a7a7a',label:'Gris'},
+  blanco:   {hex:'#f0ece4',label:'Hueso'},
+  rojizo:   {hex:'#a63d2f',label:'Rojizo'},
+  azul:     {hex:'#2b4f7a',label:'Azul Petróleo'},
+};
+
+
+
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+let cart = [];
+let currentPage = 1;
+const PAGE_SIZE = 20;
+let filteredProducts = [...PRODUCTS];
+let activeFilters = {genero:[],tipo:[],special:[],sizeFilter:[]};
+let orderCounter = 1000;
+let selectedDetailProduct = null;
+let selectedDetailSize = null;
+let selectedDetailColor = null;
+
+/* ═══════════════════════════════════════
+   PAGES
+═══════════════════════════════════════ */
+function showPage(name, linkEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  if (linkEl) linkEl.classList.add('active');
+
+  if (name === 'horarios') renderSchedule();
+  if (name === 'novedades') renderNovelties();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+function toggleMenu() {
+  const m = document.getElementById('mobile-menu');
+  const h = document.getElementById('hamburger');
+  const open = m.classList.toggle('open');
+  m.style.display = 'block';
+  h.classList.toggle('open', open);
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+/* ═══════════════════════════════════════
+   FILTERS
+═══════════════════════════════════════ */
+function filterCategory(cat, el) {
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  if(el) el.classList.add('active');
+  clearAllFilters(false);
+  if (cat !== 'all') {
+    if (['hombre','dama','ninos','unisex'].includes(cat)) activeFilters.genero = [cat];
+    else if (['sombreros','botas','cinturones','accesorios'].includes(cat)) activeFilters.tipo = [cat];
+    else if (['new','sale','hot'].includes(cat)) activeFilters.special = [cat];
+  }
+  currentPage = 1;
+  renderProducts();
+  scrollToCatalog();
+}
+
+function toggleSizeFilter(btn) {
+  const size = btn.dataset.sizeFilter;
+  btn.classList.toggle('active');
+  const idx = activeFilters.sizeFilter.indexOf(size);
+  if (idx > -1) activeFilters.sizeFilter.splice(idx, 1);
+  else activeFilters.sizeFilter.push(size);
+  currentPage = 1;
+  renderProducts();
+}
+
+function applyFilters() {
+  // Checkboxes
+  ['genero','tipo','special'].forEach(key => {
+    activeFilters[key] = [...document.querySelectorAll(`input[data-filter="${key}"]:checked`)].map(i => i.value);
+  });
+  currentPage = 1;
+  renderProducts();
+}
+
+function clearAllFilters(resetCats = true) {
+  document.querySelectorAll('.sidebar input[type=checkbox]').forEach(c => c.checked = false);
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('price-min').value = '';
+  document.getElementById('price-max').value = '';
+  activeFilters = {genero:[],tipo:[],special:[],sizeFilter:[]};
+  if (resetCats) {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('.cat-pill').classList.add('active');
+  }
+  currentPage = 1;
+  renderProducts();
+}
+
+function getFilteredAndSorted() {
+  let result = [...PRODUCTS];
+  const {genero, tipo, special, sizeFilter} = activeFilters;
+  const minP = parseFloat(document.getElementById('price-min').value) || 0;
+  const maxP = parseFloat(document.getElementById('price-max').value) || Infinity;
+
+  if (genero.length) result = result.filter(p => genero.includes(p.cat) || genero.includes('unisex') && p.cat === 'unisex');
+  if (tipo.length) result = result.filter(p => tipo.includes(p.tipo));
+  if (special.length) result = result.filter(p => special.includes(p.badge) || (special.includes('new') && p.nuevedad));
+  if (sizeFilter.length) result = result.filter(p => sizeFilter.some(s => p.sizes[s] === true));
+  result = result.filter(p => p.price >= minP && p.price <= maxP);
+
+  const sort = document.getElementById('sort-select').value;
+  if (sort === 'price-asc') result.sort((a,b) => a.price - b.price);
+  else if (sort === 'price-desc') result.sort((a,b) => b.price - a.price);
+  else if (sort === 'name-asc') result.sort((a,b) => a.name.localeCompare(b.name));
+  else if (sort === 'newest') result.sort((a,b) => (b.nuevedad?1:0) - (a.nuevedad?1:0));
+
+  return result;
+}
+
+/* ═══════════════════════════════════════
+   RENDER PRODUCTS
+═══════════════════════════════════════ */
+function renderProducts() {
+  filteredProducts = getFilteredAndSorted();
+  const total = filteredProducts.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const page = filteredProducts.slice(start, start + PAGE_SIZE);
+
+  document.getElementById('results-count').innerHTML = `<strong>${total}</strong> producto${total !== 1 ? 's' : ''}`;
+
+  const grid = document.getElementById('product-grid');
+  if (!page.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-family:var(--serif);font-style:italic">
+      <div style="font-size:3rem;margin-bottom:.75rem">🔍</div>No encontramos productos con esos filtros</div>`;
+  } else {
+    grid.innerHTML = page.map(p => renderCard(p)).join('');
+  }
+
+  renderPagination(totalPages);
+}
+
+function renderCard(p) {
+  const colors = p.colors.slice(0,4).map(c =>
+    `<div class="swatch" style="background:${COLORS[c].hex}" title="${COLORS[c].label}" onclick="event.stopPropagation()"></div>`
+  ).join('');
+  const sizesArr = Object.entries(p.sizes);
+  const sizes = sizesArr.slice(0,5).map(([s,avail]) =>
+    `<span class="card-size-chip ${!avail?'unavailable':''}">${s}</span>`
+  ).join('');
+  const badge = p.badge ? `<span class="card-badge badge-${p.badge}">${p.badge==='new'?'Nuevo':p.badge==='sale'?'Oferta':'🔥'}</span>` : '';
+  const oldPrice = p.oldPrice ? `<span class="old-price">$${p.oldPrice.toLocaleString()}</span>` : '';
+
+  return `<div class="product-card" onclick="openDetail(${p.id})">
+    <div class="card-img">
+      ${badge}
+      <span class="product-emoji">${p.emoji}</span>
+      <button class="wishlist-btn" title="Favorito" onclick="event.stopPropagation();this.classList.toggle('active');this.textContent=this.classList.contains('active')?'❤️':'🤍'">🤍</button>
+    </div>
+    <div class="card-body">
+      <div class="card-category">${p.cat} · ${p.tipo}</div>
+      <div class="card-name">${p.name}</div>
+      <div class="card-meta">
+        <div class="card-price">${oldPrice}$${p.price.toLocaleString()}</div>
+      </div>
+      <div class="color-swatches">${colors}</div>
+      <div class="card-sizes">${sizes}</div>
+      <button class="btn-add-cart" onclick="event.stopPropagation();quickAdd(${p.id})">+ Agregar</button>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════
+   PAGINATION
+═══════════════════════════════════════ */
+function renderPagination(totalPages) {
+  const el = document.getElementById('pagination');
+  if (totalPages <= 1) { el.innerHTML = ''; return; }
+
+  let html = '';
+  html += `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
+
+  let pages = [];
+  if (totalPages <= 7) {
+    for(let i=1;i<=totalPages;i++) pages.push(i);
+  } else {
+    pages = [1];
+    if (currentPage > 3) pages.push('…');
+    for(let i=Math.max(2,currentPage-1);i<=Math.min(totalPages-1,currentPage+1);i++) pages.push(i);
+    if (currentPage < totalPages-2) pages.push('…');
+    pages.push(totalPages);
+  }
+
+  pages.forEach(p => {
+    if (p === '…') html += `<span class="page-dots">…</span>`;
+    else html += `<button class="page-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
+  });
+
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}>›</button>`;
+  el.innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderProducts();
+  scrollToCatalog();
+}
+
+function scrollToCatalog() {
+  const el = document.getElementById('catalog');
+  if (el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ═══════════════════════════════════════
+   PRODUCT DETAIL
+═══════════════════════════════════════ */
+function openDetail(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  selectedDetailProduct = p;
+  selectedDetailSize = null;
+  selectedDetailColor = p.colors[0];
+
+  document.getElementById('detail-img').textContent = p.emoji;
+  document.getElementById('detail-cat').textContent = `${p.cat} · ${p.tipo}`;
+  document.getElementById('detail-name').textContent = p.name;
+  document.getElementById('detail-price').textContent = `$${p.price.toLocaleString()} MXN`;
+  document.getElementById('detail-desc').textContent = p.desc;
+
+  // Colors
+  document.getElementById('detail-colors').innerHTML = p.colors.map(c =>
+    `<div class="detail-swatch ${c===p.colors[0]?'active':''}" style="background:${COLORS[c].hex}" title="${COLORS[c].label}"
+      onclick="selectDetailColor('${c}',this)"></div>`
+  ).join('');
+
+  // Sizes
+  document.getElementById('detail-sizes').innerHTML = Object.entries(p.sizes).map(([s,avail]) =>
+    `<button class="detail-size ${!avail?'oos':''}" onclick="${avail?'selectDetailSize(\''+s+'\',this)':''}">
+      ${s}${!avail?' (ago.)':''}</button>`
+  ).join('');
+
+  document.getElementById('detail-overlay').classList.add('open');
+}
+
+function selectDetailColor(c, el) {
+  selectedDetailColor = c;
+  document.querySelectorAll('.detail-swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function selectDetailSize(s, el) {
+  selectedDetailSize = s;
+  document.querySelectorAll('.detail-size').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function addFromDetail() {
+  if (!selectedDetailProduct) return;
+  addToCart(selectedDetailProduct, selectedDetailSize || Object.keys(selectedDetailProduct.sizes)[0], selectedDetailColor || selectedDetailProduct.colors[0]);
+  closeDetail();
+}
+
+function closeDetail() {
+  document.getElementById('detail-overlay').classList.remove('open');
+}
+
+function quickAdd(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const firstAvailSize = Object.entries(p.sizes).find(([,a]) => a)?.[0] || Object.keys(p.sizes)[0];
+  addToCart(p, firstAvailSize, p.colors[0]);
+}
+
+/* ═══════════════════════════════════════
+   CART
+═══════════════════════════════════════ */
+function addToCart(product, size, color) {
+  const key = `${product.id}-${size}-${color}`;
+  const existing = cart.find(i => i.key === key);
+  if (existing) existing.qty++;
+  else cart.push({key, product, size, color, qty:1});
+  updateCartUI();
+  showToast(`✓ ${product.name} agregado`);
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s,i) => s+i.qty, 0);
+  const badge = document.getElementById('cart-badge');
+  badge.textContent = count;
+  badge.classList.toggle('visible', count > 0);
+
+  const list = document.getElementById('cart-items-list');
+  if (!cart.length) {
+    list.innerHTML = `<div class="cart-empty"><div class="empty-icon">🛒</div><p>Tu carrito está vacío</p></div>`;
+  } else {
+    list.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-img">${item.product.emoji}</div>
+        <div class="cart-item-info">
+          <div class="ci-name">${item.product.name}</div>
+          <div class="ci-meta">
+            Talla: ${item.size} · 
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${COLORS[item.color]?.hex||'#ccc'};vertical-align:middle"></span>
+            ${COLORS[item.color]?.label||item.color}
+          </div>
+          <div class="ci-price">$${(item.product.price * item.qty).toLocaleString()}</div>
+          <div class="cart-item-controls">
+            <button class="qty-btn" onclick="changeQty('${item.key}',-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.key}',1)">+</button>
+            <button class="remove-item" onclick="removeItem('${item.key}')">🗑</button>
+          </div>
+        </div>
+      </div>`).join('');
+  }
+
+  const subtotal = cart.reduce((s,i) => s + i.product.price * i.qty, 0);
+  const shipping = subtotal >= 999 ? 0 : 150;
+  const total = subtotal + shipping;
+  document.getElementById('cart-subtotal').textContent = `$${subtotal.toLocaleString()}`;
+  document.getElementById('cart-shipping').textContent = shipping === 0 ? 'Gratis' : `$${shipping}`;
+  document.getElementById('cart-total').textContent = `$${total.toLocaleString()} MXN`;
+}
+
+function changeQty(key, delta) {
+  const item = cart.find(i => i.key === key);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(i => i.key !== key);
+  updateCartUI();
+}
+
+function removeItem(key) {
+  cart = cart.filter(i => i.key !== key);
+  updateCartUI();
+}
+
+function toggleCart() {
+  const drawer = document.getElementById('cart-drawer');
+  const overlay = document.getElementById('cart-overlay');
+  const open = !drawer.classList.contains('open');
+  drawer.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+}
+
+/* ═══════════════════════════════════════
+   CHECKOUT / TICKET
+═══════════════════════════════════════ */
+function checkout() {
+  if (!cart.length) { showToast('⚠ El carrito está vacío'); return; }
+  toggleCart();
+
+  orderCounter++;
+  const orderNum = `ERG-${orderCounter}`;
+  const now = new Date().toLocaleString('es-MX', {dateStyle:'long',timeStyle:'short'});
+
+  document.getElementById('ticket-order-num').textContent = orderNum;
+  document.getElementById('ticket-date').textContent = now;
+
+  // Items
+  document.getElementById('ticket-items').innerHTML =
+    `<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.3rem 0;border-bottom:1px solid var(--warm);margin-bottom:.3rem;display:flex;gap:.5rem">
+      <span style="flex:1">Producto</span><span style="min-width:30px;text-align:center">Cant</span><span>Precio</span>
+    </div>` +
+    cart.map(i => `<div class="ti-row">
+      <div class="ti-name">${i.product.name}<br><span style="font-size:.65rem;color:var(--muted)">T:${i.size} · ${COLORS[i.color]?.label||i.color}</span></div>
+      <div class="ti-qty">${i.qty}</div>
+      <div class="ti-price">$${(i.product.price*i.qty).toLocaleString()}</div>
+    </div>`).join('');
+
+  const subtotal = cart.reduce((s,i) => s + i.product.price * i.qty, 0);
+  const shipping = subtotal >= 999 ? 0 : 150;
+  const iva = Math.round(subtotal * 0.16);
+  const total = subtotal + shipping;
+
+  document.getElementById('ticket-totals').innerHTML = `
+    <div class="tt-row"><span class="tt-l">Subtotal</span><span>$${subtotal.toLocaleString()}</span></div>
+    <div class="tt-row"><span class="tt-l">IVA (16%, incluido)</span><span>$${iva.toLocaleString()}</span></div>
+    <div class="tt-row"><span class="tt-l">Envío</span><span>${shipping===0?'Gratis 🎉':'$'+shipping}</span></div>
+    <div class="tt-row grand"><span class="tt-l">TOTAL</span><span style="color:var(--rust)">$${total.toLocaleString()} MXN</span></div>`;
+
+  // Barcode decoration
+  const bc = document.getElementById('ticket-barcode');
+  bc.innerHTML = Array.from({length:42}, (_,i) =>
+    `<div class="barcode-line ${i%7===0?'t':i%3===0?'g':''}" style="height:${Math.random()*20+22}px"></div>`
+  ).join('');
+
+  document.getElementById('ticket-modal').classList.add('open');
+  cart = [];
+  updateCartUI();
+}
+
+function closeTicket() {
+  document.getElementById('ticket-modal').classList.remove('open');
+}
+
+/* ═══════════════════════════════════════
+   SCHEDULE
+═══════════════════════════════════════ */
+function renderSchedule() {
+  const branch = document.getElementById('branch-select')?.value || 'cdmx';
+  const data = SCHEDULE_DATA[branch];
+  const todayIdx = new Date().getDay(); // 0=Sunday
+  const dayMap = [6,0,1,2,3,4,5]; // convert JS day to our array index
+
+  document.getElementById('schedule-grid').innerHTML = data.map((d, i) => {
+    const isToday = dayMap[todayIdx] === i;
+    return `<div class="schedule-card ${isToday?'today':''}">
+      <div class="sch-day">${d.day}</div>
+      <div class="sch-hours ${d.closed?'sch-closed':''}">${d.hours}</div>
+      ${d.note?`<div class="sch-note">${d.note}</div>`:''}
+      ${isToday?'<span class="today-badge">Hoy</span>':''}
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════
+   NOVELTIES
+═══════════════════════════════════════ */
+function renderNovelties() {
+  const novels = PRODUCTS.filter(p => p.nuevedad || p.badge === 'new');
+  document.getElementById('novelties-grid').innerHTML = novels.map(p => renderCard(p)).join('');
+}
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ═══════════════════════════════════════
+   CLOSE ON OUTSIDE CLICK
+═══════════════════════════════════════ */
+document.getElementById('detail-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDetail();
+});
+document.getElementById('ticket-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeTicket();
+});
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+renderProducts();
+renderSchedule();
+updateCartUI();
+</script>
+</body>
+</html>
